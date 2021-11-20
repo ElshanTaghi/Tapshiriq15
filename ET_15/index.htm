@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="cars">
+
+    <select  id="marka">
+
+    </select>
+
+
+    <select  id="model" >
+
+    </select>
+
+    <select  id="ili">
+
+    </select>
+
+    <div id="show"></div>
+
+    
+
+
+<script>
+
+    
+
+let marka = [
+    "opel", "Nissan" 
+];
+
+let model = [
+    ["ASTRA", "Vectra"],
+    ["Tida", "Sunny"]
+];
+
+let ili = [
+    "2010", "2015","2020" 
+];
+
+let final = [
+    
+];
+
+
+let markaSekect = document.getElementById("marka");
+let modelSekect = document.getElementById("model");
+let iliSelect = document.getElementById("ili");
+
+
+
+onload = function(){
+    let opt = `<option selected disabled> Marka sec </option>`;
+
+    for(let i = 0; i<marka.length; i++){
+        opt += `<option value="${i}"> ${marka[i]} </option>`;
+    }
+
+    markaSekect.innerHTML = opt;
+}
+
+
+
+markaSekect.onchange = function modell(){
+    let optm = `<option selected disabled> Model sec </option>`;
+    let mvalue = markaSekect.value;
+    for(let k = 0; k<model[mvalue].length; k++){
+        optm += `<option value="${k}"> ${model[mvalue][k]} </option>`;
+    }
+    
+
+    modelSekect.innerHTML = optm;
+    final.push(marka[mvalue]);
+  
+}
+
+modelSekect.onchange = function il(){
+    
+    let opti = `<option selected disabled> ili sec </option>`;
+    for(let j = 0; j<3; j++){
+        opti += `<option value="${j}"> ${ili[j]} </option>`;
+       
+    }
+
+
+    iliSelect.innerHTML = opti;
+    let mlvalue = modelSekect.value;
+    for(let k = 0; k<model[mlvalue].length-1; k++){
+        final.push(model[k][mlvalue])
+    }    
+}
+
+iliSelect.onchange =function gosder(){
+        
+       
+    console.log(final);
+}
+
+    
+
+
+
+</script>
+
+</body>
+</html>
